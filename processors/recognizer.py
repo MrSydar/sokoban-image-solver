@@ -1,7 +1,6 @@
+import numpy as np
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.models import Sequential
-from tensorflow import argmax
-import numpy as np
 
 
 class Classifier:
@@ -21,7 +20,7 @@ class Classifier:
         ])
 
         self.model.compile(optimizer='adam',
-                      loss='binary_crossentropy',
-                      metrics=['accuracy'])
+                           loss='binary_crossentropy',
+                           metrics=['accuracy'])
 
         self.model.load_weights(weights_path.format(epoch=0))

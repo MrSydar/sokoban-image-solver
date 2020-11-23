@@ -1,5 +1,6 @@
 from processors.image_game_processor import *
-from processors.brain import Classifier
+from processors.pddl import PDDLer
+from processors.recognizer import Classifier
 
 
 def process_image(path):
@@ -50,6 +51,12 @@ def get_game_field(image, cells_contours):
     return game_field
 
 
+def solve(game, directory):
+    solver = PDDLer(directory + '/domain.pddl', directory + '/problem.pddl', directory + '/output/plan.txt')
+    solver.generate_problem(game)
+    solver.solve()
+
+
 def main():
     ret = process_image('images/samples/games/game_1.jpg')
     thresh = ret[0]
@@ -60,15 +67,7 @@ def main():
     for row in game_field:
         print(row)
 
-    # for c in ordered_cells:
-    #     img = get_sign(thresh, c)
-    #     resultIdx = image_processor.recognise(img)
-    #     # print(resultIdx)
-    #     print('I think it is ' + ['player', 'cross', 'empty square', 'filled square'][resultIdx])
-    #     # exit(0)
-    #     # cv2.drawContours(thresh, [c], -1, (100, 100, 100), -1)
-    #     # cv2.imshow('thresh', thresh)
-    #     # cv2.waitKey()
+    solve(game_field, 'C:/Users/Den/PycharmProjects/sokoban-image-processing/pddl')
 
 
 if __name__ == "__main__":

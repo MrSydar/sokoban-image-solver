@@ -2,7 +2,6 @@ from copy import deepcopy
 from math import sqrt
 from statistics import mean, stdev
 
-from PIL import Image
 import cv2
 import numpy as np
 
@@ -239,6 +238,7 @@ def order_cells(cells, delta):
             sorted_row.append(obj.shape)
 
     return sorted_row
+
 
 # i = 64
 def get_sign(binary_image, contour):

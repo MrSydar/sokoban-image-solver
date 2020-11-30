@@ -58,7 +58,7 @@ def solve(game, directory):
 
 
 def main():
-    ret = process_image('images/samples/games/game_1.jpg')
+    ret = process_image('images/samples/games/game_3.jpg')
     thresh = ret[0]
     ordered_cells = ret[1]
 

@@ -4,6 +4,7 @@ from statistics import mean, stdev
 
 import cv2
 import numpy as np
+from PIL import Image
 
 from datastructures import barbecue as ba
 
@@ -240,7 +241,7 @@ def order_cells(cells, delta):
     return sorted_row
 
 
-# i = 64
+# i = 128
 def get_sign(binary_image, contour):
     # global i
     mask = np.zeros((binary_image.shape[0], binary_image.shape[1]), np.uint8)

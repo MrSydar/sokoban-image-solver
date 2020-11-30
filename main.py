@@ -58,18 +58,16 @@ def solve(game, directory):
 
 
 def main():
-    ret = process_image('images/samples/char-packs/squares_filled_3.jpg')
+    ret = process_image('images/samples/games/game_1.jpg')
     thresh = ret[0]
     ordered_cells = ret[1]
 
-    cv2.imshow('preview', thresh)
-    cv2.waitKey()
-    # game_field = get_game_field(thresh, ordered_cells)
-    #
-    # for row in game_field:
-    #     print(row)
-    #
-    # solve(game_field, 'C:/Users/Den/PycharmProjects/sokoban-image-processing/pddl')
+    game_field = get_game_field(thresh, ordered_cells)
+
+    for row in game_field:
+        print(row)
+
+    solve(game_field, 'C:/Users/Den/PycharmProjects/sokoban-image-processing/pddl')
 
 
 if __name__ == "__main__":

@@ -73,14 +73,11 @@ model = Sequential([
     Dense(4, activation='softmax')
 ])
 
-# model = tensorflow.keras.models.load_model('tfmodels/model.h5')
-
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 
-# model.load_weights(model_export_path.format(epoch=0))
-model.fit(train_images, train_labels, epochs=14, batch_size=32)
+model.fit(train_images, train_labels, epochs=14, batch_size=50)
 
 loss, acc = model.evaluate(train_images, train_labels, verbose=2)
 print("Restored model, accuracy: {:5.2f}%".format(100 * acc))

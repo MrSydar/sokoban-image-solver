@@ -1,7 +1,8 @@
 from processors.image_game_processor import *
-from processors.pddl import PDDLer
 from processors.recognizer import Classifier
+from processors.pddl import PDDLer
 
+from argparse import ArgumentParser
 
 def process_image(path):
     image = get_image(path)
@@ -31,7 +32,7 @@ def get_game_field(image, cells_contours):
     N = int(N)
 
     image_processor = Classifier(
-        "C:/Users/Den/PycharmProjects/sokoban-image-processing/tfmodels/training_2/cp-0000.ckpt"
+        "./tfmodels/training_2/cp-0000.ckpt"
     )
 
     game_field = []
@@ -57,8 +58,8 @@ def solve(game, directory):
     solver.solve()
 
 
-def main():
-    ret = process_image('images/samples/games/game_3.jpg')
+def main(args):
+    ret = process_image(args.image)
     thresh = ret[0]
     ordered_cells = ret[1]
 
@@ -67,8 +68,16 @@ def main():
     for row in game_field:
         print(row)
 
-    solve(game_field, 'C:/Users/Den/PycharmProjects/sokoban-image-processing/pddl')
+    solve(game_field, './pddl')
 
 
 if __name__ == "__main__":
-    main()
+    parser = ArgumentParser()
+    
+    parser.add_argument("-i", "--image", dest="image",
+        help="input image", metavar="FILE", required=True)
+
+    args = parser.parse_args()
+
+    print(args)
+    main(args)

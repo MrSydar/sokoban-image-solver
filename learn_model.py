@@ -7,9 +7,9 @@ from PIL import Image
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.models import Sequential
 
-model_export_path = "C:/Users/Den/PycharmProjects/sokoban-image-processing/tfmodels/training_2/cp-{epoch:04d}.ckpt"
+model_export_path = "./tfmodels/training_2/cp-{epoch:04d}.ckpt"
 
-train_dir = "C:/Users/Den/PycharmProjects/sokoban-image-processing/images/samples/training-symbols/"
+train_dir = "./images/samples/training-symbols/"
 train_players = train_dir + 'players/'
 train_crosses = train_dir + 'crosses/'
 train_esquares = train_dir + 'empty-squares/'
